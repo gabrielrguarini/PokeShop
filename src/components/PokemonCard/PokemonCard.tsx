@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { PokeInfosInterface } from "../assets/interfaces/PokeInfosInterface";
+import { PokeInfosInterface } from "../../assets/interfaces/PokeInfosInterface";
 
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
-import { Pokemons } from "../services/listPokemons";
-import { listPokeInfos } from "../services/listPokeInfos";
-export function PokemonCard({ name, url }: Pokemons) {
+import { Pokemons } from "../../services/listPokemons";
+import { listPokeInfos } from "../../services/listPokeInfos";
+export function PokemonCard({ name }: Pokemons) {
     const [pokeInfo, setpokeInfo] = useState<PokeInfosInterface | undefined>(
         undefined
     );
@@ -15,7 +15,6 @@ export function PokemonCard({ name, url }: Pokemons) {
             setpokeInfo(res);
         });
     }, []);
-    console.log("PokeInfo: ", pokeInfo);
 
     return (
         <li className="list-group-item col-3 pt-4">

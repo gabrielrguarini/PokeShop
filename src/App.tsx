@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
-import { PokemonCard } from "./components/PokemonCard";
+import { CartPage } from "./components/Cart/CartPage";
+import Navbar from "./components/Navbar/Navbar";
+import { PokemonList } from "./components/PokemonList/PokemonList";
 import { listPokemon } from "./services/listPokemons";
 import { Pokemons } from "./services/listPokemons";
 
@@ -12,21 +15,21 @@ function App() {
             setPokemons(res.results);
         });
     }, []);
-    console.log(pokemons);
     return (
-        <div className="App container-fluid">
-            <ul className="list-flush list-group-horizontal row justify-content-between">
-                {pokemons?.map((res) => {
-                    return (
-                        <PokemonCard
-                            key={res.name}
-                            name={res.name}
-                            url={res.url}
+        <>
+            <Navbar />
+            <div className="App container-fluid">
+                <BrowserRouter>
+                    <Routes>
+                        <Route
+                            path="/"
+                            element={<PokemonList pokemons={pokemons} />}
                         />
-                    );
-                })}
-            </ul>
-        </div>
+                        <Route path="/cart" element={<CartPage />} />
+                    </Routes>
+                </BrowserRouter>
+            </div>
+        </>
     );
 }
 

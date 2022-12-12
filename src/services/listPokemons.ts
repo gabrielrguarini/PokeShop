@@ -5,7 +5,7 @@ export interface Pokemons {
     url: string;
 }
 
-interface ListPokemonInterface{
+export interface ListPokemonInterface{
     count: number;
     next: null | string;
     previous: null | string;
