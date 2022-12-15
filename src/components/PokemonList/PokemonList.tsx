@@ -1,15 +1,21 @@
 import { Pokemons } from "../../services/listPokemons";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 
-interface PokeArrayInterface {
+export function PokemonList({
+    pokemons,
+    filterText,
+}: {
     pokemons: Pokemons[];
-}
-
-export function PokemonList(props: PokeArrayInterface) {
+    filterText: string;
+}) {
+    const pokemonsFilter = pokemons.filter((pokemon) =>
+        pokemon.name.includes(filterText)
+    );
+    console.log(pokemonsFilter);
     return (
         <>
             <ul className="list-flush list-group-horizontal row justify-content-between">
-                {props.pokemons?.map((res) => {
+                {pokemonsFilter?.map((res) => {
                     return (
                         <PokemonCard
                             key={res.name}
