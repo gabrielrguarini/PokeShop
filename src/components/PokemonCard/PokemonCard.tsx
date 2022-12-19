@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { PokeInfosInterface } from "../../assets/interfaces/PokeInfosInterface";
 
+import { Plus } from "phosphor-react";
+
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 
@@ -32,7 +34,15 @@ export function PokemonCard({ name }: Pokemons) {
                     <Card.Title>
                         <strong>{name.toUpperCase()}</strong>
                     </Card.Title>
-                    <Button variant="success">Adicionar a Pokedex</Button>
+                    <Button variant="success" className="d-flex mr-2">
+                        Adicionar a Pokedex
+                        <Plus
+                            size={20}
+                            color="#faf4f4"
+                            weight="bold"
+                            className="align-self-center ml-2"
+                        />
+                    </Button>
                 </Card.Body>
             </Card>
         </li>
