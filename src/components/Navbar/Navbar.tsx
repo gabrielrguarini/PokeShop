@@ -1,4 +1,5 @@
 import { ShoppingCart } from "phosphor-react";
+import { Link } from "react-router-dom";
 
 interface SearchInterface {
     handleFilterTextChange: (value: string) => void;
@@ -8,14 +9,13 @@ export default function Navbar({
     handleFilterTextChange,
     filterText,
 }: SearchInterface) {
-    console.log(filterText);
     return (
         <>
             <header className="navbar navbar-dark bg-dark">
                 <div className="container">
-                    <a className="navbar-brand px-4" href="/">
+                    <Link className="navbar-brand px-4" to={""}>
                         Pokedex
-                    </a>
+                    </Link>
                     <form className="form-inline">
                         <input
                             className="form-control mr-sm-2"
@@ -28,9 +28,9 @@ export default function Navbar({
                             value={filterText}
                         />
                     </form>
-                    <a href="/cart">
+                    <Link to={"cart"}>
                         <ShoppingCart size={32} color="#faf4f4" />
-                    </a>
+                    </Link>
                 </div>
             </header>
         </>

@@ -18,6 +18,7 @@ export function PokemonCard({ name }: Pokemons) {
         });
     }, []);
 
+    function handleClick() {}
     return (
         <li className="list-group-item col-3 pt-4">
             <Card className="text-center" style={{ width: "18rem" }}>
@@ -34,7 +35,11 @@ export function PokemonCard({ name }: Pokemons) {
                     <Card.Title>
                         <strong>{name.toUpperCase()}</strong>
                     </Card.Title>
-                    <Button variant="success" className="d-flex mr-2">
+                    <Button
+                        variant="success"
+                        className="d-flex mr-2"
+                        onClick={handleClick}
+                    >
                         Adicionar a Pokedex
                         <Plus
                             size={20}

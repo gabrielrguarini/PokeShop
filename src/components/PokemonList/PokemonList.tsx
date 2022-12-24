@@ -11,7 +11,6 @@ export function PokemonList({
     const pokemonsFilter = pokemons.filter((pokemon) =>
         pokemon.name.includes(filterText)
     );
-    console.log(pokemonsFilter);
     return (
         <>
             <ul className="list-flush list-group-horizontal row justify-content-between">
