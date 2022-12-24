@@ -20,6 +20,10 @@ function App() {
             setPokemonsList(res.results);
         });
     }, []);
+
+    useEffect(() => {
+        localStorage.setItem("Pokemons", JSON.stringify(pokedex));
+    }, [pokedex]);
     return (
         <div className="App container-fluid">
             <PokedexContext.Provider value={{ pokemons: pokedex, setPokedex }}>
