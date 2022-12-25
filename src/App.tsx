@@ -7,7 +7,7 @@ import { PokemonList } from "./components/PokemonList/PokemonList";
 import { listPokemon } from "./services/listPokemons";
 import { Pokemons } from "./services/listPokemons";
 import { PokemonsInterface } from "./assets/interfaces/PokedexInterface";
-import PokedexContext from "./contexts/PokedexContext";
+import { PokedexContext } from "./contexts/PokedexContext";
 
 function App() {
     const [pokemonsList, setPokemonsList] = useState<Pokemons[]>([]);
@@ -20,7 +20,6 @@ function App() {
             setPokemonsList(res.results);
         });
     }, []);
-
     useEffect(() => {
         localStorage.setItem("Pokemons", JSON.stringify(pokedex));
     }, [pokedex]);
