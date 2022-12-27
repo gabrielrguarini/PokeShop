@@ -8,9 +8,10 @@ import Card from "react-bootstrap/Card";
 
 import { Pokemons } from "../../services/listPokemons";
 import { listPokeInfos } from "../../services/listPokeInfos";
-import PokedexContext from "../../contexts/PokedexContext";
+import { PokedexContext } from "../../contexts/PokedexContext";
+import { PokedexInterface } from "../../assets/interfaces/PokedexInterface";
 export function PokemonCard({ name }: Pokemons) {
-    const pokedex = useContext(PokedexContext);
+    const pokemons: PokedexInterface = useContext(PokedexContext);
     const [pokeInfo, setpokeInfo] = useState<PokeInfosInterface | undefined>(
         undefined
     );
@@ -22,20 +23,20 @@ export function PokemonCard({ name }: Pokemons) {
 
     function handleAddPokemon(handlePokemon: string) {
         let havePokemon = 0;
-        pokedex.pokemons.forEach((pokemon) => {
+        pokemons.pokemons.forEach((pokemon) => {
             if (pokemon.pokemon === handlePokemon) {
                 havePokemon++;
                 pokemon.count++;
-                pokedex.setPokedex([...pokedex.pokemons]);
+                pokemons.setPokemons([...pokemons.pokemons]);
                 return;
             }
         });
         if (havePokemon === 0) {
-            pokedex.setPokedex([
-                ...pokedex.pokemons,
-                { pokemon: handlePokemon, count: 0 },
+            pokemons.setPokemons([
+                ...pokemons.pokemons,
+                { pokemon: handlePokemon, count: 1 },
             ]);
-            console.log(pokedex.pokemons);
+            console.log(pokemons.pokemons);
         }
     }
     return (

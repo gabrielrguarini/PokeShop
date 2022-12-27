@@ -1,14 +1,11 @@
 import { ShoppingCart } from "phosphor-react";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { PokedexContext } from "../../contexts/PokedexContext";
 
-interface SearchInterface {
-    handleFilterTextChange: (value: string) => void;
-    filterText: string;
-}
-export default function Navbar({
-    handleFilterTextChange,
-    filterText,
-}: SearchInterface) {
+export default function Navbar() {
+    const { filterText, setFilterText } = useContext(PokedexContext);
+
     return (
         <>
             <header className="navbar navbar-dark bg-dark">
@@ -22,9 +19,7 @@ export default function Navbar({
                             type="search"
                             placeholder="Pesquisar"
                             aria-label="Pesquisar"
-                            onChange={(e) =>
-                                handleFilterTextChange(e.target.value)
-                            }
+                            onChange={(e) => setFilterText(e.target.value)}
                             value={filterText}
                         />
                     </form>

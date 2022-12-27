@@ -1,16 +1,17 @@
-import { Pokemons } from "../../services/listPokemons";
+import { useContext } from "react";
+import { PokedexContext } from "../../contexts/PokedexContext";
 import { PokemonCard } from "../PokemonCard/PokemonCard";
 
-export function PokemonList({
-    pokemons,
-    filterText,
-}: {
-    pokemons: Pokemons[];
-    filterText: string;
-}) {
-    const pokemonsFilter = pokemons.filter((pokemon) =>
-        pokemon.name.includes(filterText)
+export function PokemonList() {
+    const { filterText, pokemonsList } = useContext(PokedexContext);
+
+    const pokemonsFilter = pokemonsList.filter((pokemon) =>
+        pokemon.name.includes(filterText.toLowerCase())
     );
+    pokemonsList.map((res) => {
+        res.name;
+    });
+
     return (
         <>
             <ul className="list-flush list-group-horizontal row justify-content-between">
