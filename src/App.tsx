@@ -4,6 +4,7 @@ import { PokedexPage } from "./components/Pokedex/PokedexPage";
 import Navbar from "./components/Navbar/Navbar";
 import { PokemonList } from "./components/PokemonList/PokemonList";
 import { PokedexProvider } from "./contexts/PokedexContext";
+import { CssBaseline } from "@mui/material";
 
 function App() {
     // const [pokemonsList, setPokemonsList] = useState<Pokemons[]>([]);
@@ -16,17 +17,16 @@ function App() {
     //     });
     // }, []);
     return (
-        <div className="App container-fluid">
-            <PokedexProvider>
-                <BrowserRouter>
-                    <Navbar />
-                    <Routes>
-                        <Route path="/" element={<PokemonList />} />
-                        <Route path="/cart" element={<PokedexPage />} />
-                    </Routes>
-                </BrowserRouter>
-            </PokedexProvider>
-        </div>
+        <PokedexProvider>
+            <CssBaseline />
+            <BrowserRouter>
+                <Navbar />
+                <Routes>
+                    <Route path="/" element={<PokemonList />} />
+                    <Route path="/cart" element={<PokedexPage />} />
+                </Routes>
+            </BrowserRouter>
+        </PokedexProvider>
     );
 }
 
